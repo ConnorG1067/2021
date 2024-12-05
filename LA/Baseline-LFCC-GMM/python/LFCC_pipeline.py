@@ -1,4 +1,3 @@
-import scipy.fftpack
 from spafe.utils.preprocessing import pre_emphasis, framing, windowing, zero_handling
 from spafe.utils.exceptions import ParameterError, ErrorMsgs
 from spafe.fbanks.linear_fbanks import linear_filter_banks
