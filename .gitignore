@@ -3,3 +3,6 @@ LA/Baseline-LFCC-GMM/python/lfcc.h5
 LA/Baseline-LFCC-GMM/python/__pycache__/gmm.cpython-37.pyc
 LA/Baseline-LFCC-GMM/python/__pycache__/LFCC_pipeline.cpython-37.pyc
 LA/Baseline-LFCC-GMM/python/gmm_LA_lfcc.pkl_bonafide_init_partial.pkl
+LA/Baseline-LFCC-GMM/python/gmm_LA_lfcc.pkl
+LA/Baseline-LFCC-GMM/python/gmm_LA_lfcc.pkl_spoof_init_partial.pkl
+LA/Baseline-LFCC-GMM/python/gmm_lfcc_asvspoof21_la.pkl

@@ -2,7 +2,7 @@ from spafe.utils.preprocessing import pre_emphasis, framing, windowing, zero_han
 from spafe.utils.exceptions import ParameterError, ErrorMsgs
 from spafe.fbanks.linear_fbanks import linear_filter_banks
 from librosa import util
-import scipy
+from scipy import fftpack
 import numpy as np
 
 
@@ -113,6 +113,6 @@ def lfcc(sig,
     log_features = np.log10(features+2.2204e-16)
 
     #  -> DCT(.)
-    lfccs=scipy.fftpack.dct(log_features, type=dct_type, norm='ortho', axis=1)[:, :num_ceps ]
+    lfccs=fftpack.dct(log_features, type=dct_type, norm='ortho', axis=1)[:, :num_ceps ]
 
     return lfccs
