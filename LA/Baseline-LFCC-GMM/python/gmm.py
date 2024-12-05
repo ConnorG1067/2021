@@ -1,4 +1,4 @@
-from numpy import log, exp, infty, zeros_like, vstack, zeros, errstate, finfo, sqrt, floor, tile, concatenate, arange, meshgrid, ceil, linspace
+from numpy import log, exp, inf, zeros_like, vstack, zeros, errstate, finfo, sqrt, floor, tile, concatenate, arange, meshgrid, ceil, linspace
 from sklearn.mixture import GaussianMixture
 from scipy.special import logsumexp
 from scipy.signal import lfilter

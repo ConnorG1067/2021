@@ -1,9 +1,9 @@
+import scipy.fftpack
 from spafe.utils.preprocessing import pre_emphasis, framing, windowing, zero_handling
 from spafe.utils.exceptions import ParameterError, ErrorMsgs
 from spafe.fbanks.linear_fbanks import linear_filter_banks
-from spafe.utils.cepstral import cms, cmvn, lifter_ceps
-from spafe.utils.spectral import dct, power_spectrum
 from librosa import util
+import scipy
 import numpy as np
 
 
@@ -93,7 +93,16 @@ def lfcc(sig,
     abs_fft_values = np.abs(fourrier_transform)**2
 
     #  -> x linear-fbanks
-    linear_fbanks_mat = linear_filter_banks(nfilts=nfilts,
+    # 
+    # Old spafe docs
+    # (numpy array) array of size nfilts * (nfft/2 + 1) containing filterbank. Each row holds 1 filter.
+
+    # New spafe docs
+    # (numpy.ndarray) : array of size nfilts * (nfft/2 + 1) containing filter bank. Each row holds 1 filter.
+    # (numpy.ndarray) : array of center frequencies
+
+    # _ the second element of the tuple because it is not needed.
+    linear_fbanks_mat, _ = linear_filter_banks(nfilts=nfilts,
                                             nfft=nfft,
                                             fs=fs,
                                             low_freq=low_freq,
@@ -105,6 +114,6 @@ def lfcc(sig,
     log_features = np.log10(features+2.2204e-16)
 
     #  -> DCT(.)
-    lfccs=dct(log_features, type=dct_type, norm='ortho', axis=1)[:, :num_ceps ]
+    lfccs=scipy.fftpack.dct(log_features, type=dct_type, norm='ortho', axis=1)[:, :num_ceps ]
 
     return lfccs
